@@ -31,12 +31,15 @@ func main() {
         content := r.FormValue("content")
         if to == "" {
             http.Error(w, "parameter to can't be empty", http.StatusBadRequest)
+            return
         }
         if subject == "" {
             http.Error(w, "parameter subject can't be empty", http.StatusBadRequest)
+            return
         }
         if content == "" {
             http.Error(w, "parameter content can't be empty", http.StatusBadRequest)
+            return
         }
         if err := sendEmail(conf, to, subject, content); err != nil {
             http.Error(w, fmt.Sprintf("Failed to send email %v", err), http.StatusInternalServerError)
