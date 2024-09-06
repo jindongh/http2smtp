@@ -1,0 +1,9 @@
+services:
+  http2smtp:
+    image: jindongh/http2smtp:latest
+    restart: unless-stopped
+    env_file:
+      .env
+    ports:
+      - '8888:8888'
+
