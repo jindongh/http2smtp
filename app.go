@@ -75,7 +75,7 @@ func sendEmail(conf *config, to, subject, content string) error {
     m.SetHeader("From", conf.smtp_user)
     m.SetHeader("To", to)
     m.SetHeader("Subject", subject)
-    m.SetBody("text", content)
+    m.SetBody("text/plain", content)
     d := mail.NewDialer(conf.smtp_host, conf.smtp_port, conf.smtp_user, conf.smtp_password)
     return d.DialAndSend(m)
 }
